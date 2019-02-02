@@ -2,6 +2,7 @@
 
 ## Prompt
 CHALLENGE #2: WHERE DO I FARM?
+
 It may surprise you to know that farmer’s don’t always know where to farm. They have 2D and 3D maps of their land provided by the government and through apps like Google Maps, but not all of the land can be farmed because of things like buildings, streams, ditches, roads, electrical lines, etc.
 
 This challenge is to create a software tool using readily available maps as input to create a series map defining the usable area to be covered by an agricultural operation.
