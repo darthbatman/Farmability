@@ -16,7 +16,7 @@ def dominant_color(image_path):
     image = image.resize((150, 150))
     image_array = np.asarray(image)
     image_shape = image_array.shape
-    image_array = image_array.reshsape(
+    image_array = image_array.reshape(
         scipy.product(image_shape[:2]),
         image_shape[2]).astype(float)
     codes, dist = scipy.cluster.vq.kmeans(image_array, NUM_CLUSTERS)
