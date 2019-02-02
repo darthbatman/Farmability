@@ -28,3 +28,5 @@ https://patents.google.com/patent/US20160029545?oq=field+characteristics+satelli
 https://agco-accelerator-hack.com/challenge-2.pdf
 
 http://ecocrop.fao.org/ecocrop/srv/en/cropSearchForm
+
+https://docs.google.com/document/d/1tYzqF3D-1ZxzR3AAZBuKdKxuq2mgJ_2ZvuA0JKfKaqY/edit?usp=sharing
