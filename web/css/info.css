@@ -1,0 +1,67 @@
+@font-face {
+	font-family: Avenir;
+	src: url(fonts/AvenirLT.ttf);
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+#title {
+	margin-top: 3%;
+	float: top;
+	font-family: 'Avenir';
+	font-size: 32px;
+}
+
+#left {
+	text-align: center;
+	width: 33.33%;
+	height: 100%;
+	float: left;
+}
+
+#center {
+	width: 33.33%;
+	height: 100%;
+	float: left;
+}
+
+#right {
+	width: 33.33%;
+	height: 100%;
+	position: relative;
+	float: right;
+}
+
+#left-down, #left-right {
+	text-align: center;
+	height: 50%;
+}
+
+#content-container {
+	width: 100%;
+	height: 100%;
+	min-height: 100%;
+}
+
+#old_image {
+	text-align: center;
+	padding: 0;
+	margin: auto;
+}
+
+#new_image {
+	text-align: center;
+	padding: 0;
+	margin: auto;
+}
+
+input[type=text] {
+	font-family: 'Avenir';
+	font-size: 32px;
+	text-align: center;
+	background-color: #F4F4F4;
+	color: #5F5F5F;
+}

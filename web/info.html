@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Farmability</title>
+		<link rel="stylesheet" type="text/css" href="css/info.css">
+	</head>
+	<body>
+		<script src="js/info.js"></script>
+		<div id="content-container">
+			<p id="title">Land Analysis</p>
+			<div id="left">
+				<div id="left-up">
+					<canvas id="old_image">
+						<script>
+							var canvas = document.getElementById("old_image");
+							var ctx = canvas.getContext("2d");
+							ctx.fillStyle = "#FF0000";
+							ctx.fillRect(0, 0, 150, 150);
+						</script>
+					</canvas>
+				</div>
+				<div id="left-down">
+					<canvas id="new_image">
+						<script>
+							var canvas = document.getElementById("new_image");
+							var ctx = canvas.getContext("2d");
+							ctx.fillStyle = "#FF0000";
+							ctx.fillRect(0, 0, 150, 150);
+						</script>
+					</canvas>
+				</div>
+			</div>
+			<div id="center">
+				<h1>Hello</h1>
+			</div>
+			<div id="right">
+				<h1>Hello</h1>
+			</div>
+		</div>
+	</body>
+</html>
