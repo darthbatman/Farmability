@@ -4,14 +4,22 @@ import cv2
 import time
 
 filename = "test1.png"
+h = 15
+s = 20
+l = 30
 
-if(len(sys.argv) > 1):
-    filename = sys.argv[0]
+# python3 run_pipeline.py ../assets/fields/generated_fields/field0.jpg 24 17 41
+
+if(len(sys.argv) >= 5):
+    filename = sys.argv[1]
+    h = int(sys.argv[2])
+    s = int(sys.argv[3])
+    l = int(sys.argv[4])
 
 image = cv2.imread(filename, cv2.IMREAD_UNCHANGED)
 cv2.namedWindow("Image")
 
-pipeline = HSLPipline()
+pipeline = HSLPipline(h, s, l)
 processed_image = pipeline.process(image)
 
 processed_filename = filename.split('.')[0] + "_processed.png"
