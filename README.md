@@ -10,18 +10,21 @@ This challenge is to create a software tool using readily available maps as inpu
 The vision is that that farmers can use this map to plan and execute their farming operations throughout the crop cycle or to create a coverage path at the field entrance just before starting to operate. The coverage map needs to clearly identify ‘no-farm zone’ assets as zones excluded from the rest of the field.
 
 ## Idea
-- Area of Field
+System to Provide Following Information:
 - Where to Plant
-- How many seeds to buy
+- How Many Seeds to Buy
 - What to Plant Based on:
-  - shape
-  - color
-  - temperature
-  - precipitation
-  - seeds owned
-  - location (latitude/longitude)
+  - Size of Field
+  - Shape of Field
+  - Color of Field
+  - Location (Latitude, Longitude)
+  - Temperature for Location
+  - Precipitation for Location
+  - Seeds Owned
 
 ## Resources
 https://patents.google.com/patent/US20160029545?oq=field+characteristics+satellite+image
+
 https://agco-accelerator-hack.com/challenge-2.pdf
+
 http://ecocrop.fao.org/ecocrop/srv/en/cropSearchForm
