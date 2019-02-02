@@ -10,3 +10,4 @@
   - temperature
   - precipitation
   - seeds owned
+  - location (latitude/longitude)
