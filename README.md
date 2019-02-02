@@ -1,6 +1,6 @@
 # AGCO Accelerator Hackathon
-##  Let's get this dub.
 
+## Idea
 - Area of Field
 - Where to Plant
 - How many seeds to buy
@@ -11,4 +11,7 @@
   - precipitation
   - seeds owned
   - location (latitude/longitude)
-- http://ecocrop.fao.org/ecocrop/srv/en/cropSearchForm
+
+## Resources
+https://patents.google.com/patent/US20160029545?oq=field+characteristics+satellite+image
+http://ecocrop.fao.org/ecocrop/srv/en/cropSearchForm
