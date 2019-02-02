@@ -19,3 +19,9 @@ def save_image_for_location(image_path, latitude, longitude):
         (600, 300))
     request.save_image(image_path)
     crop_out_google_footer(image_path, image_path)
+
+
+def save_image_for_google_maps_url(image_path, google_maps_url):
+    latitude = google_maps_url.split('@')[1].split(',')[0]
+    longitude = google_maps_url.split('@')[1].split(',')[1]
+    save_image_for_location(image_path, latitude, longitude)
