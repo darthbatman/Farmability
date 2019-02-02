@@ -16,7 +16,7 @@ def save_image_for_location(image_path, latitude, longitude):
         'satellite',
         (latitude, longitude),
         15,
-        (600, 300))
+        (600, 600))
     request.save_image(image_path)
     crop_out_google_footer(image_path, image_path)
 
