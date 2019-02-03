@@ -13,7 +13,7 @@ def dominant_color(image_path):
     https://stackoverflow.com/questions/3241929/python-find-dominant-most-common-color-in-an-image
     """
     image = Image.open(image_path)
-    image = image.resize((150, 150))
+    image = image.resize((50, 50))
     image_array = np.asarray(image)
     image_shape = image_array.shape
     image_array = image_array.reshape(
