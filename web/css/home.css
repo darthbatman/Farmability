@@ -10,12 +10,15 @@ body {
 
 #background {
 	position: absolute;
-	bottom: 0;
+	height: 30%;
+	top: 70%;
 }
 
 #title {
-	margin-top: 3%;
-	float: top;
+	position: absolute;
+	left: 40%;
+	width: 20%;
+	top: 1%;
 	font-family: 'Avenir';
 	font-size: 64px;
 }
@@ -25,7 +28,10 @@ body {
 }
 
 #google-maps-url {
-	width: 100%;
+	position: absolute;
+	top: 24%;
+	left: 20%;
+	width: 60%;
 	line-height: 50px;
 	margin-bottom: 10%;
 	border-radius: 50px;
@@ -39,6 +45,7 @@ body {
 	width: 20%;
 	position: absolute;
 	left: 20%;
+	top: 39%;
 	line-height: 50px;
 	margin-bottom: 10%;
 	border-radius: 50px;
@@ -60,6 +67,7 @@ body {
 	margin-top: -0.7%;
 	position: absolute;
 	left: 50%;
+	top: 40.3%;
 	content: 'Upload Image';
 	font-family: 'Avenir';
 	font-size: 24px;
@@ -95,6 +103,7 @@ input {
 
 #analyze {
 	position: absolute;
+	top: 44%;
 	color: #FFFFFF;
 	background-color: #85A555;
 	width: 16%;
@@ -118,14 +127,14 @@ input {
 
 #or {
 	position: absolute;
-	top: 31%;
+	top: 32.5%;
 	left: 50%;
 	font-size: 24px;
 }
 
 #plus {
 	position: absolute;
-	top: 39%;
+	top: 40%;
 	left: 45%;
 	font-size: 24px;
 }
