@@ -5,7 +5,7 @@ from werkzeug.utils import secure_filename
 app = Flask(__name__)
 app.secret_key = "secret key"
 app.config['UPLOAD_FOLDER'] = 'assets'
-ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
+ALLOWED_EXTENSIONS = set(['png', 'jpg'])
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -15,7 +15,6 @@ def allowed_file(filename):
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
     if request.method == 'POST':
-        print(request)
         # check if the post request has the file part
         if 'file' not in request.files:
             flash('No file part')
@@ -35,8 +34,11 @@ def upload_file():
     return render_template('index.html')
 
 
-@app.route('/<filename>')
+@app.route('/<filename>', methods=['GET', 'POST', 'OPTIONS'])
 def uploaded_file(filename):
+    if request.method == 'POST':
+        rgb = request.get_json()
+
     filename = app.config['UPLOAD_FOLDER'] + '/' + filename
     return render_template('uploaded_image.html', filename=filename)
 
@@ -52,4 +54,4 @@ def send_js(path):
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+    app.run(debug=True)
