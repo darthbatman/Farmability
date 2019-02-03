@@ -19,9 +19,9 @@ class HSLPipline:
 
         self.blur_0_output = None
 
-        self.hue_threshold_range = 5
-        self.sat_threshold_range = 100
-        self.lum_threshold_range = 100
+        self.hue_threshold_range = 5.0
+        self.sat_threshold_range = 100.0
+        self.lum_threshold_range = 100.0
         HSLPipline.filename = filename
 
         self.__rgb_threshold_input = self.blur_0_output
@@ -40,9 +40,8 @@ class HSLPipline:
         if hi > 180:
             hi %= 180
         self.__hsl_threshold_hue = [low, hi]
-        self.__hsl_threshold_saturation = [max(0, s - self.sat_threshold_range), min(255, s + self.sat_threshold_range)]
-        self.__hsl_threshold_luminance = [max(0, l - self.lum_threshold_range), min(255, l + self.lum_threshold_range)]
-
+        self.__hsl_threshold_saturation = [max(0, s - self.sat_threshold_range), min(254.0, s + self.sat_threshold_range)]
+        self.__hsl_threshold_luminance = [max(0, l - self.lum_threshold_range), min(254.0, l + self.lum_threshold_range)]
         self.hsl_threshold_output = None
 
         self.__blur_1_input = self.hsl_threshold_output

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<body>
+<body onload="updateImage()">
     <head>
         <title>My page</title>
         <meta charset="utf-8" />
@@ -15,7 +15,7 @@
             var pixelData = canvas.getContext('2d').getImageData(event.offsetX, event.offsetY, 1, 1).data;
             $.ajax({
                 type: "POST",
-                url: "parse_data",
+                url: canvas.src,
                 data: JSON.stringify({ 
                     R: pixelData[0],
                     G: pixelData[1],
@@ -27,6 +27,7 @@
         }
     </script>
 
+<html>
     <div class="ui grid">
         <div class="four wide column"></div>
         <canvas id="canvas" src="{{filename}}" onclick="getRGB()">
@@ -34,20 +35,29 @@
                 var canvas = document.getElementById("canvas")
                 var img = new Image
                 img.src = canvas.getAttribute("src")
+                
                 img.onload = function() {
                     canvas.width = img.width
                     canvas.height = img.height
                     canvas.getContext("2d").drawImage(img, 0, 0);
                     var processed_image = document.getElementById("processed")
-                    processed_image.src = img.src.substr(0, img.src.length - 4) + '_processed.png'
+                    processed_image.src = img.src.substr(0, img.src.length - 4) + "_processed.png" + "?rnd=" + Math.random()
                 }
             </script>
         </canvas>
         <div class="four wide column">
-            <img id="processed">
+            <img id="processed" name="proc">
         </div>
         <div class="four wide column"></div>
         <div class="four wide column"></div>
+        <script language="javascript">
+            function updateImage() {
+                obj = document.proc;
+                obj.src = obj.src + "?" + Math.random();
+                setTimeout("updateImage()", 500);
+            }
+            
+        </script>
     </div>
 </body>
 </html>

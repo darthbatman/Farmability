@@ -3,6 +3,7 @@ from flask import Flask, render_template, flash, request, redirect, url_for, sen
 from werkzeug.utils import secure_filename
 import sys
 import cv2
+import numpy
 
 sys.path.insert(0, './src/')
 import map_to_image
@@ -24,7 +25,6 @@ def allowed_file(filename):
 
 def process_image(filename="assets/fields/generated_fields/field0.png", h=24, s=17, l=41):
     image = cv2.imread(filename, cv2.IMREAD_UNCHANGED)
-
     pipeline = HSLPipline(h, s, l, filename)
     pipeline.process(image)
 
@@ -63,10 +63,13 @@ def upload_file():
 
 @app.route('/<filename>', methods=['GET', 'POST', 'OPTIONS'])
 def uploaded_file(filename):
+    filepath = app.config['UPLOAD_FOLDER'] + '/' + request.url[20:]
     if request.method == 'POST':
         rgb = request.get_json()
+        rgb = numpy.uint8([[[rgb['B'],rgb['G'],rgb['R']]]])
+        hls = cv2.cvtColor(rgb,cv2.COLOR_BGR2HLS)
+        process_image(filepath, hls[0][0][0], hls[0][0][2], hls[0][0][1])
 
-    
     filename = app.config['UPLOAD_FOLDER'] + '/' + filename
     return render_template('uploaded_image.html', filename=filename)
 
