@@ -3,10 +3,9 @@ from flask import Flask, render_template, flash, request, redirect, url_for, sen
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
-app.secret_key = "super secret key"
+app.secret_key = "secret key"
 app.config['UPLOAD_FOLDER'] = 'assets'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
-
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -53,4 +52,4 @@ def send_js(path):
 
 
 if __name__ == '__main__':
-    app.run(debug=False, host='0.0.0.0')
+    app.run(debug=True, host='0.0.0.0')
