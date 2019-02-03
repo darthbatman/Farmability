@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<body>
+<script type="text/javascript" >
+    function getRGB() {
+        var canvas = document.getElementById("canvas")
+        var pixelData = canvas.getContext('2d').getImageData(event.offsetX, event.offsetY, 1, 1).data;
+        console.log(pixelData)
+    }
+</script>
+<canvas id="canvas" src="{{filename}}" onclick="getRGB()">
+    <script> 
+        var canvas = document.getElementById("canvas")
+        var img = new Image
+        img.src = canvas.getAttribute("src")
+        img.onload = function() {
+            canvas.width = img.width
+            canvas.height = img.height
+            canvas.getContext("2d").drawImage(img, 0, 0);
+        }
+    </script>
+</canvas>
+</body>
+</html>

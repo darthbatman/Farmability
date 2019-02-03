@@ -12,9 +12,9 @@ l = 30
 
 if(len(sys.argv) >= 5):
     filename = sys.argv[1]
-    h = int(sys.argv[2])
-    s = int(sys.argv[3])
-    l = int(sys.argv[4])
+    h = float(sys.argv[2])
+    s = float(sys.argv[3])
+    l = float(sys.argv[4])
 
 image = cv2.imread(filename, cv2.IMREAD_UNCHANGED)
 cv2.namedWindow("Image")
