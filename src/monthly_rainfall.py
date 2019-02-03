@@ -18,7 +18,7 @@ def weather(lat, lon):
     #response = json.loads(r.text)
     #print(response)
     #print(station['id'])
-    rainfall = {}
+    #rainfall = {}
     for i in range(0,10):
         year = str(2009 + i)
         url = "https://www.ncdc.noaa.gov/cdo-web/api/v2/data?stationid=" + station['id'] + "&datasetid=GSOM&units=standard&startdate=" + year + "-04-01&enddate=" + year + "-08-01&datatypeid=PRCP"
@@ -27,14 +27,22 @@ def weather(lat, lon):
         if 'results' in response:
             data = response['results']
             rPerMonth = [None] * 5
+            rainfall = {}
             for j in range(0,5):
                 rPerMonth[j] = data[j]['value']
             rainfall[2009+i] = rPerMonth
+    total = 0
+    num_months = 0
     for i in rainfall:
         for j in rainfall[i]:
-            print(j)
+            total += j
+            num_months += 1
+    if num_months == 0:
+        return None
+    else:
+        return total/num_months
 
 if __name__ == "__main__":
-    weather(41.2847803,-85.9969306)
+    weather(40.0901078,-86.6466174)
 
     
