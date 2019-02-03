@@ -7,7 +7,7 @@ import cv2
 sys.path.insert(0, './src/')
 import map_to_image
 
-sys.path.insert(0, './vision/')
+sys.path.insert(0, './src/vision/')
 from hslpipline import *
 
 app = Flask(__name__, template_folder='web')
