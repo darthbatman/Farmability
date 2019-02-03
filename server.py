@@ -12,7 +12,7 @@ from hslpipline import *
 
 app = Flask(__name__, template_folder='web')
 app.secret_key = "secret key"
-app.config['UPLOAD_FOLDER'] = 'assets/uploaded'
+app.config['UPLOAD_FOLDER'] = 'assets/uploaded/'
 ALLOWED_EXTENSIONS = set(['png', 'jpg'])
 
 
@@ -35,7 +35,7 @@ def upload_file():
             google = request.form['google']
             if google != '':
                 filename = 'google-maps1.png'
-                filepath = 'assets/' + filename
+                filepath = app.config['UPLOAD_FOLDER'] + filename
                 if (os.path.isfile(filepath)):
                     os.remove(filepath)
 
