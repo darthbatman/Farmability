@@ -162,6 +162,11 @@ body {
 	top: 0;
 	height: 20%;
 	width: 100%;
+	text-align: center;
+}
+
+#additional-info-title {
+	font-size: 2vw;
 }
 
 #additional-info-data-container {
@@ -211,7 +216,7 @@ body {
 }
 
 #additional-info-indication-one {
-	visibility: hidden;
+	
 }
 
 #additional-info-indication-two {
@@ -219,5 +224,9 @@ body {
 }
 
 #additional-info-indication-three {
+	visibility: hidden;
+}
+
+#additional-info-indication-four {
 	visibility: hidden;
 }

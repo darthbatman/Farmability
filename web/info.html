@@ -36,27 +36,6 @@
 			</script>
 		</div>
 		<div id="summary-container">
-			<!-- <div id="summary-one" class="hackathon-hide">
-				<div id="symbol-container">
-					<img id="symbol" src=""/>
-				</div>
-				<div id="summary-text-container">
-					<div id="summary-title-container">
-						<p id="summary-title"></p>
-					</div>
-					<div id="summary-subtitle-container">
-						<p id="summary-subtitle"></p>
-					</div>
-					<div id="summary-member-one-container">
-						<p id="summary-member-one"></p>
-						<img id="summary-member-one-icon" src=""/>
-					</div>
-					<div id="summary-member-two-container">
-						<p id="summary-member-two"></p>
-						<img id="summary-member-two-icon" src=""/>
-					</div>
-				</div>
-			</div> -->
 			<div id="summary-two">
 				<div id="symbol-container">
 					<img id="symbol" src="" />
@@ -78,46 +57,28 @@
 					</div>
 				</div>
 			</div>
-			<!-- <div id="summary-three" class="hackathon-hide">
-				<div id="symbol-container">
-					<img id="symbol" src="" />
-				</div>
-				<div id="summary-text-container">
-					<div id="summary-title-container">
-						<p id="summary-title"></p>
-					</div>
-					<div id="summary-subtitle-container">
-						<p id="summary-subtitle"></p>
-					</div>
-					<div id="summary-member-one-container">
-						<p id="summary-member-one"></p>
-						<img id="summary-member-one-icon" src=""/>
-					</div>
-					<div id="summary-member-two-container">
-						<p id="summary-member-two"></p>
-						<img id="summary-member-two-icon" src=""/>
-					</div>
-				</div>
-			</div> -->
 		</div>
 		<div id="additional-info-container">
 			<div id="additional-info">
 				<div id="additional-info-title-container">
-					<p id="additional-info-title">
+					<p id="additional-info-title"></p>
 				</div>
 				<div id="additional-info-data-container">
 					<div class="additional-info-data" id="additional-info-data-color" style="background-color: rgb({{soil_color_r}},{{soil_color_g}},{{soil_color_b}});">
 					</div>
 					<div class="additional-info-data" id="additional-info-data-text-one">
+						{{soil_munsell_fine}}
 					</div>
 					<div class="additional-info-data" id="additional-info-data-text-two">
+						{{soil_munsell_color}} {{soil_water_content}}
 					</div>
 				</div>
 				<div id="additional-info-indication-container">
 					<ul>
-						<li id="additional-info-indication-one"></li>
-						<li id="additional-info-indication-two"></li>
-						<li id="additional-info-indication-three"></li>
+						<li id="additional-info-indication-one">{{soil_indicates}}</li>
+						<li id="additional-info-indication-two">{{soil_munsell_fine}}</li>
+						<li id="additional-info-indication-three">{{precipitation}}</li>
+						<li id="additional-info-indication-four">{{soil_indicates}}</li>
 					</ul>
 				</div>
 			</div>

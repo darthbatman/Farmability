@@ -22,6 +22,8 @@ app.secret_key = "secret key"
 app.config['UPLOAD_FOLDER'] = 'assets'
 ALLOWED_EXTENSIONS = set(['png', 'jpg'])
 
+avg_rain = 0.0
+
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -41,10 +43,14 @@ def upload_file():
             google = request.form['google']
             if google != '':
                 lat = google[google.find('@')+1:]
-                lat = lat[:22]
-                lon = lat[lat.find(',')+1:]
-                lat = lat[:lat.find(',')]
+                lat = lat.split(',')
+                lon = lat[1]
+                lat = lat[0]
+                global avg_rain
+                print(lat)
+                print(lon)
                 avg_rain = weather(float(lat),float(lon))
+                print(avg_rain)
 
                 filename = 'google-maps1.png'
                 filepath = app.config['UPLOAD_FOLDER'] + '/' + filename
@@ -101,13 +107,18 @@ def uploaded_file(filename):
 
     if 'favicon.ico' not in filename:
         most_dominant_color = dominant_image_color.dominant_color(filename)
-        print(most_dominant_color)
+        soil_match = find_closest_soil_match_by_color(most_dominant_color, 'data/soil.json')
 
     return render_template('info.html',
         filename=filename,
         soil_color_r=most_dominant_color[0],
         soil_color_g=most_dominant_color[1],
-        soil_color_b=most_dominant_color[2])
+        soil_color_b=most_dominant_color[2],
+        soil_munsell_fine=soil_match['munsell_fine'],
+        soil_munsell_color=soil_match['munsell_color'],
+        soil_water_content=soil_match['water_content'],
+        soil_indicates=soil_match['indicates'][0],
+        precipitation=str(avg_rain))
 
 @app.route('/assets/<filename>')
 def send_assets(filename):
