@@ -6,6 +6,7 @@ import cv2
 
 sys.path.insert(0, './src/')
 import map_to_image
+import dominant_image_color
 
 sys.path.insert(0, './src/vision/')
 from hslpipline import *
@@ -66,9 +67,17 @@ def uploaded_file(filename):
     if request.method == 'POST':
         rgb = request.get_json()
 
-    
     filename = app.config['UPLOAD_FOLDER'] + '/' + filename
-    return render_template('uploaded_image.html', filename=filename)
+
+    if 'favicon.ico' not in filename:
+        most_dominant_color = dominant_image_color.dominant_color(filename)
+        print(most_dominant_color)
+
+    return render_template('info.html',
+        filename=filename,
+        soil_color_r=most_dominant_color[0],
+        soil_color_g=most_dominant_color[1],
+        soil_color_b=most_dominant_color[2])
 
 @app.route('/assets/<filename>')
 def send_assets(filename):

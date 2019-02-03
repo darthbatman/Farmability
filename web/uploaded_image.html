@@ -8,6 +8,7 @@
         rel="stylesheet"
         href="//cdn.jsdelivr.net/npm/semantic-ui@2.4.1/dist/semantic.min.css"
         />
+        <link rel="icon" type="image/png" href="img/icon.png">
     </head>
     <script type="text/javascript" >
         function getRGB() {
@@ -15,7 +16,7 @@
             var pixelData = canvas.getContext('2d').getImageData(event.offsetX, event.offsetY, 1, 1).data;
             $.ajax({
                 type: "POST",
-                url: "parse_data",
+                url: canvas.src
                 data: JSON.stringify({ 
                     R: pixelData[0],
                     G: pixelData[1],
@@ -29,6 +30,7 @@
 
     <div class="ui grid">
         <div class="four wide column"></div>
+        <h2>{{rgbVal}}</h2>
         <canvas id="canvas" src="{{filename}}" onclick="getRGB()">
             <script> 
                 var canvas = document.getElementById("canvas")
