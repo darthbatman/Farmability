@@ -8,7 +8,7 @@ from hslpipline import *
 
 app = Flask(__name__)
 app.secret_key = "secret key"
-app.config['UPLOAD_FOLDER'] = 'assets'
+app.config['UPLOAD_FOLDER'] = 'assets/uploaded'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 
 
@@ -20,12 +20,8 @@ def allowed_file(filename):
 def process_image(filename="assets/fields/generated_fields/field0.png", h=24, s=17, l=41):
     image = cv2.imread(filename, cv2.IMREAD_UNCHANGED)
 
-    pipeline = HSLPipline(h, s, l)
-    processed_image = pipeline.process(image)
-
-    processed_filename = filename.split('.')[0] + "_processed.png"
-    cv2.imwrite(processed_filename, image)
-
+    pipeline = HSLPipline(h, s, l, filename)
+    pipeline.process(image)
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():

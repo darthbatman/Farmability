@@ -47,7 +47,7 @@ class HSLPipline:
 
         self.__blur_1_input = self.hsl_threshold_output
         self.__blur_1_type = BlurType.Median_Filter
-        self.__blur_1_radius = 7
+        self.__blur_1_radius = 8.5
 
         self.blur_1_output = None
 
@@ -158,7 +158,10 @@ class HSLPipline:
             for i in range(0, len(contour)):
                 cv2.drawContours(source0, contour, i, (numpy.random.randint(255), numpy.random.randint(255), numpy.random.randint(255)), 3)
             break
-        
+
+        processed_filename = HSLPipline.filename.split('.')[0] + "_processed.png"
+        cv2.imwrite(processed_filename, source0)
+
         return contours, source0
 
 

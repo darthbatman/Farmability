@@ -24,7 +24,6 @@ pipeline = HSLPipline(h, s, l, filename)
 processed_image = pipeline.process(image)
 
 processed_filename = filename.split('.')[0] + "_processed.png"
-cv2.imwrite(processed_filename, image)
 cv2.imshow("Image", processed_image)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
