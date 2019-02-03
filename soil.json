@@ -133,6 +133,19 @@
 			"indicates": [
 				"high organic matter content"
 			]
+		},
+		{
+			"munsell_fine": "10YR 6/1",
+			"munsell_color": "light gray",
+			"water_content": "moist",
+			"color": {
+				"r": "133",
+				"g": "127",
+				"b": "118"
+			},
+			"indicates": [
+				"low oxygen"
+			]
 		}
 	]
 }
