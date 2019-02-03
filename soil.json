@@ -8,7 +8,10 @@
 				"r": "56",
 				"g": "39",
 				"b": "24"
-			}
+			},
+			"indicates": [
+				"high organic matter content"
+			]
 		},
 		{
 			"munsell_fine": "7.5YR 5/2",
@@ -18,7 +21,10 @@
 				"r": "119",
 				"g": "93",
 				"b": "60"
-			}
+			},
+			"indicates": [
+				"oxidation"
+			]
 		},
 		{
 			"munsell_fine": "2.5YR 5/8",
@@ -28,7 +34,11 @@
 				"r": "142",
 				"g": "64",
 				"b": "28"
-			}
+			},
+			"indicates": [
+				"oxidation",
+				"presence of iron oxides"
+			]
 		},
 		{
 			"munsell_fine": "2.5YR 7/8",
@@ -38,7 +48,11 @@
 				"r": "180",
 				"g": "112",
 				"b": "52"
-			}
+			},
+			"indicates": [
+				"oxidation",
+				"presence of iron oxides"
+			]
 		},
 		{
 			"munsell_fine": "10YR 2/1",
@@ -48,7 +62,10 @@
 				"r": "35",
 				"g": "27",
 				"b": "21"
-			}
+			},
+			"indicates": [
+				"high organic matter content"
+			]
 		},
 		{
 			"munsell_fine": "7.5YR 2.5/1",
@@ -58,7 +75,10 @@
 				"r": "42",
 				"g": "31",
 				"b": "23"
-			}
+			},
+			"indicates": [
+				"high organic matter content"
+			]
 		},
 		{
 			"munsell_fine": "2.5YR 3/1",
@@ -68,7 +88,11 @@
 				"r": "49",
 				"g": "35",
 				"b": "24"
-			}
+			},
+			"indicates": [
+				"oxidation",
+				"presence of iron oxides"
+			]
 		},
 		{
 			"munsell_fine": "2.5YR 6/1",
@@ -78,7 +102,11 @@
 				"r": "130",
 				"g": "108",
 				"b": "76"
-			}
+			},
+			"indicates": [
+				"oxidation",
+				"presence of iron oxides"
+			]
 		},
 		{
 			"munsell_fine": "10YR 2/2",
@@ -88,7 +116,10 @@
 				"r": "37",
 				"g": "26",
 				"b": "18"
-			}
+			},
+			"indicates": [
+				"high organic matter content"
+			]
 		},
 		{
 			"munsell_fine": "7.5YR 2.5/2",
@@ -98,7 +129,10 @@
 				"r": "46",
 				"g": "32",
 				"b": "21"
-			}
+			},
+			"indicates": [
+				"high organic matter content"
+			]
 		}
 	]
 }
