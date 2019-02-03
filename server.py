@@ -12,7 +12,7 @@ from hslpipline import *
 
 app = Flask(__name__, template_folder='web')
 app.secret_key = "secret key"
-app.config['UPLOAD_FOLDER'] = 'assets'
+app.config['UPLOAD_FOLDER'] = 'assets/uploaded'
 ALLOWED_EXTENSIONS = set(['png', 'jpg'])
 
 
