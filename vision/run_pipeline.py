@@ -2,7 +2,7 @@ from hslpipline import *
 import sys
 import cv2
 
-filename = "test1.png"
+filename = "../assets/fields/generated_fields/field0.png"
 h = 24
 s = 17
 l = 41
@@ -20,7 +20,7 @@ if(len(sys.argv) >= 5):
 image = cv2.imread(filename, cv2.IMREAD_UNCHANGED)
 cv2.namedWindow("Image")
 
-pipeline = HSLPipline(h, s, l)
+pipeline = HSLPipline(h, s, l, filename)
 processed_image = pipeline.process(image)
 
 processed_filename = filename.split('.')[0] + "_processed.png"
