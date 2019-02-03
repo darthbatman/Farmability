@@ -3,6 +3,10 @@ from flask import Flask, render_template, flash, request, redirect, url_for, sen
 from werkzeug.utils import secure_filename
 import sys
 import cv2
+
+sys.path.insert(0, './src/')
+import map_to_image
+
 sys.path.insert(0, './vision/')
 from hslpipline import *
 
@@ -28,25 +32,26 @@ def upload_file():
     if request.method == 'POST':
         # check if the post request has the file part
         if 'file' not in request.files:
-            flash('No file part')
-            return redirect(request.url)
+            return render_template('home.html')
+
         file = request.files['file']
+        coordinates = request.form['coordinates']
+        google = request.form['google']
+        
         # if user does not select file, browser also
         # submit an empty part without filename
-        if file.filename == '':
-            flash('No selected file')
-            return redirect(request.url)
-        if file and allowed_file(file.filename):
+        if file and allowed_file(file.filename) and coordinates != '':
             filename = secure_filename(file.filename)
             filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename) 
             file.save(filepath)
-
             process_image(filepath)
 
             return redirect(url_for('uploaded_file',
                                     filename=filename))
+        elif google:
+            map_to_image.save_image_for_google_maps_url(app.config['UPLOAD_FOLDER'] + '/google-maps.png', google)
 
-    return render_template('index.html')
+    return render_template('home.html')
 
 
 @app.route('/<filename>', methods=['GET', 'POST', 'OPTIONS'])
@@ -57,11 +62,21 @@ def uploaded_file(filename):
     filename = app.config['UPLOAD_FOLDER'] + '/' + filename
     return render_template('uploaded_image.html', filename=filename)
 
-
 @app.route('/assets/<filename>')
 def send_assets(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
+@app.route('/css/<filename>')
+def send_css(filename):
+    return send_from_directory('templates/css', filename)
+
+@app.route('/fonts/<filename>')
+def send_fonts(filename):
+    return send_from_directory('templates/fonts', filename)
+
+@app.route('/img/<filename>')
+def send_img(filename):
+    return send_from_directory('templates/img', filename)
 
 @app.route('/js/<path:path>')
 def send_js(path):
