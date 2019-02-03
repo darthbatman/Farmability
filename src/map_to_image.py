@@ -11,11 +11,11 @@ def crop_out_google_footer(source_image_path, cropped_image_path):
     cropped_image.save(cropped_image_path)
 
 
-def save_image_for_location(image_path, latitude, longitude):
+def save_image_for_location(image_path, zoom, coordinates):
     request = GoogleMapsStaticAPIRequest(
         'satellite',
-        (latitude, longitude),
-        16,
+        (coordinates[0], coordinates[1]),
+        zoom,
         (600, 600))
     request.save_image(image_path)
     crop_out_google_footer(image_path, image_path)
@@ -24,4 +24,19 @@ def save_image_for_location(image_path, latitude, longitude):
 def save_image_for_google_maps_url(image_path, google_maps_url):
     latitude = google_maps_url.split('@')[1].split(',')[0]
     longitude = google_maps_url.split('@')[1].split(',')[1]
-    save_image_for_location(image_path, latitude, longitude)
+    zoom = 16
+    if 'z' in google_maps_url:
+        zoom_str = google_maps_url.split('@')[1].split(',')[2].split('z')[0]
+        zoom = int(float(zoom_str))
+    elif 'm' in google_maps_url:
+        meters_str = google_maps_url.split('@')[1].split(',')[2].split('m')[0]
+        meters = int(meters_str)
+        if meters < 500:
+            zoom = 17
+        elif meters < 1000:
+            zoom = 16
+        elif meters < 1500:
+            zoom = 15
+        else:
+            zoom = 14
+    save_image_for_location(image_path, zoom, (latitude, longitude))
