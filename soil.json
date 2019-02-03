@@ -1,0 +1,104 @@
+{
+	"soil_types": [
+		{
+			"munsell_fine": "7.5YR 3/2",
+			"munsell_color": "dark brown",
+			"water_content": "moist",
+			"color": {
+				"r": "56",
+				"g": "39",
+				"b": "24"
+			}
+		},
+		{
+			"munsell_fine": "7.5YR 5/2",
+			"munsell_color": "brown",
+			"water_content": "dry",
+			"color": {
+				"r": "119",
+				"g": "93",
+				"b": "60"
+			}
+		},
+		{
+			"munsell_fine": "2.5YR 5/8",
+			"munsell_color": "red",
+			"water_content": "moist",
+			"color": {
+				"r": "142",
+				"g": "64",
+				"b": "28"
+			}
+		},
+		{
+			"munsell_fine": "2.5YR 7/8",
+			"munsell_color": "light red",
+			"water_content": "dry",
+			"color": {
+				"r": "180",
+				"g": "112",
+				"b": "52"
+			}
+		},
+		{
+			"munsell_fine": "10YR 2/1",
+			"munsell_color": "black",
+			"water_content": "moist",
+			"color": {
+				"r": "35",
+				"g": "27",
+				"b": "21"
+			}
+		},
+		{
+			"munsell_fine": "7.5YR 2.5/1",
+			"munsell_color": "black",
+			"water_content": "dry",
+			"color": {
+				"r": "42",
+				"g": "31",
+				"b": "23"
+			}
+		},
+		{
+			"munsell_fine": "2.5YR 3/1",
+			"munsell_color": "dark reddish gray",
+			"water_content": "moist",
+			"color": {
+				"r": "49",
+				"g": "35",
+				"b": "24"
+			}
+		},
+		{
+			"munsell_fine": "2.5YR 6/1",
+			"munsell_color": "reddish gray",
+			"water_content": "dry",
+			"color": {
+				"r": "130",
+				"g": "108",
+				"b": "76"
+			}
+		},
+		{
+			"munsell_fine": "10YR 2/2",
+			"munsell_color": "very dark brown",
+			"water_content": "moist",
+			"color": {
+				"r": "37",
+				"g": "26",
+				"b": "18"
+			}
+		},
+		{
+			"munsell_fine": "7.5YR 2.5/2",
+			"munsell_color": "very dark brown",
+			"water_content": "dry",
+			"color": {
+				"r": "46",
+				"g": "32",
+				"b": "21"
+			}
+		}
+	]
+}
