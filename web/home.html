@@ -9,12 +9,14 @@
 		<div id="content-container">
 			<div id="content">
 				<p id="title">Farmability</p>
-				<input id="google-maps-url" type="text"/>
-				<span id="or" class="join-words">or</span>
-				<input id="coordinates" type="text"/>
-				<span class="join-words">+</span>
-				<input id="upload-image" type="button"/>
-				<input id="analyze" type="button"/>
+				<form method="post" enctype="multipart/form-data">
+					<input id="google-maps-url" placeholder="Enter Google Maps URL" type="text"/>
+					<span id="or" class="join-words">or</span>
+					<input id="coordinates" placeholder="lat,lon" type="text"/>
+					<span class="join-words">+</span>
+					<input id="upload-image" value="Upload Image" type="button"/>
+					<input id="analyze" type="button"/>
+				</form>
 			</div>
 		</div>
 		<div id="background">
