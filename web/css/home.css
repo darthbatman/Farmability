@@ -1,6 +1,6 @@
 @font-face {
   font-family: Avenir;
-  src: url(fonts/AvenirLT.ttf);
+  src: url(../fonts/AvenirLT.ttf);
 }
 
 body {
@@ -36,8 +36,9 @@ body {
 }
 
 #coordinates {
-	width: 30%;
-	float: left;
+	width: 20%;
+	position: absolute;
+	left: 20%;
 	line-height: 50px;
 	margin-bottom: 10%;
 	border-radius: 50px;
@@ -47,15 +48,30 @@ body {
     -webkit-appearance: none;
 }
 
-#upload-image {
-	width: 60%;
-	float: right;
+#upload-image::-webkit-file-upload-button {
+	visibility: hidden;
+	display: none;
+}
+
+
+#upload-image::before {
+	text-align: center;
+	width: 30%;
+	margin-top: -1%;
+	position: absolute;
+	left: 50%;
+	content: 'Upload Image';
+	font-family: 'Avenir';
+	font-size: 24px;
+	text-align: center;
+	background-color: #F4F4F4;
+	color: #5F5F5F;
 	line-height: 50px;
 	border-radius: 50px;
 	border-style: solid;
 	border-width: thin;
 	border-color: #979797;
-    -webkit-appearance: none;
+	cursor: pointer;
 }
 
 #content-container {
@@ -71,10 +87,25 @@ body {
 
 input {
 	font-family: 'Avenir';
-	font-size: 32px;
+	font-size: 24px;
 	text-align: center;
 	background-color: #F4F4F4;
 	color: #5F5F5F;
+}
+
+#analyze {
+	position: absolute;
+	color: #FFFFFF;
+	background-color: #85A555;
+	width: 16%;
+	left: 42%;
+	margin-top: 6%;
+	line-height: 50px;
+	border-radius: 50px;
+	border-style: solid;
+	border-width: thin;
+	border-color: #979797;
+    -webkit-appearance: none;
 }
 
 ::placeholder {
