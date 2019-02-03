@@ -1,0 +1,80 @@
+@font-face {
+  font-family: Avenir;
+  src: url(fonts/AvenirLT.ttf);
+}
+
+body {
+	width: 100%;
+	overflow: hidden;
+}
+
+#background {
+	position: absolute;
+	bottom: 0;
+}
+
+#title {
+	margin-top: 3%;
+	float: top;
+	font-family: 'Avenir';
+	font-size: 64px;
+}
+
+#background-image {
+	max-width: 100%;
+}
+
+#google-maps-url {
+	width: 100%;
+	line-height: 50px;
+	margin-bottom: 10%;
+	border-radius: 50px;
+	border-style: solid;
+	border-width: thin;
+	border-color: #979797;
+    -webkit-appearance: none;
+}
+
+#coordinates {
+	width: 30%;
+	float: left;
+	line-height: 50px;
+	margin-bottom: 10%;
+	border-radius: 50px;
+	border-style: solid;
+	border-width: thin;
+	border-color: #979797;
+    -webkit-appearance: none;
+}
+
+#upload-image {
+	width: 60%;
+	float: right;
+}
+
+#content-container {
+	text-align: center;
+	width: 100%;
+}
+
+#content {
+	text-align: center;
+	width: 60%;
+	display: inline-block
+}
+
+input[type=text] {
+	font-family: 'Avenir';
+	font-size: 32px;
+	text-align: center;
+	background-color: #F4F4F4;
+	color: #5F5F5F;
+}
+
+#or {
+	margin: 2%;
+}
+
+.join-words {
+	font-family: 'Avenir';
+}
