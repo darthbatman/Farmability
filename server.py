@@ -77,15 +77,15 @@ def send_assets(filename):
 
 @app.route('/css/<filename>')
 def send_css(filename):
-    return send_from_directory('templates/css', filename)
+    return send_from_directory('web/css', filename)
 
 @app.route('/fonts/<filename>')
 def send_fonts(filename):
-    return send_from_directory('templates/fonts', filename)
+    return send_from_directory('web/fonts', filename)
 
 @app.route('/img/<filename>')
 def send_img(filename):
-    return send_from_directory('templates/img', filename)
+    return send_from_directory('web/img', filename)
 
 @app.route('/js/<path:path>')
 def send_js(path):
@@ -93,4 +93,4 @@ def send_js(path):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="0.0.0.0", debug=True)
