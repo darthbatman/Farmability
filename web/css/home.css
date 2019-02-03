@@ -57,7 +57,7 @@ body {
 #upload-image::before {
 	text-align: center;
 	width: 30%;
-	margin-top: -1%;
+	margin-top: -0.7%;
 	position: absolute;
 	left: 50%;
 	content: 'Upload Image';
@@ -117,7 +117,17 @@ input {
 }
 
 #or {
-	margin: 2%;
+	position: absolute;
+	top: 31%;
+	left: 50%;
+	font-size: 24px;
+}
+
+#plus {
+	position: absolute;
+	top: 39%;
+	left: 45%;
+	font-size: 24px;
 }
 
 .join-words {
