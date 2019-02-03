@@ -15,7 +15,7 @@ def save_image_for_location(image_path, latitude, longitude):
     request = GoogleMapsStaticAPIRequest(
         'satellite',
         (latitude, longitude),
-        15,
+        16,
         (600, 600))
     request.save_image(image_path)
     crop_out_google_footer(image_path, image_path)
