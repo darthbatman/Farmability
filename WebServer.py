@@ -1,15 +1,30 @@
 import os
 from flask import Flask, render_template, flash, request, redirect, url_for, send_from_directory
 from werkzeug.utils import secure_filename
+import sys
+import cv2
+sys.path.insert(0, './vision/')
+from hslpipline import *
 
 app = Flask(__name__)
 app.secret_key = "secret key"
 app.config['UPLOAD_FOLDER'] = 'assets'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 
+
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
+def process_image(filename="assets/fields/generated_fields/field0.png", h=24, s=17, l=41):
+    image = cv2.imread(filename, cv2.IMREAD_UNCHANGED)
+
+    pipeline = HSLPipline(h, s, l)
+    processed_image = pipeline.process(image)
+
+    processed_filename = filename.split('.')[0] + "_processed.png"
+    cv2.imwrite(processed_filename, image)
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -28,7 +43,11 @@ def upload_file():
             return redirect(request.url)
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename) 
+            file.save(filepath)
+
+            process_image(filepath)
+
             return redirect(url_for('uploaded_file',
                                     filename=filename))
 

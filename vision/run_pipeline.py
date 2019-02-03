@@ -1,14 +1,15 @@
 from hslpipline import *
 import sys
 import cv2
-import time
 
 filename = "test1.png"
-h = 15
-s = 20
-l = 30
+h = 24
+s = 17
+l = 41
 
 # python3 run_pipeline.py ../assets/fields/generated_fields/field0.jpg 24 17 41
+if(len(sys.argv) == 2):
+    filename = sys.argv[1]
 
 if(len(sys.argv) >= 5):
     filename = sys.argv[1]

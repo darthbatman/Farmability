@@ -153,8 +153,6 @@ class HSLPipline:
         contours = cv2.findContours(input, mode, method)
 
         for contour in contours:  # Trust me need the useless for loop
-            # for cont in contour:
-            #     if cv2.contourArea(cont) > area_threshold:
             cv2.drawContours(source0, contour, -1, (0, 255, 0), 3)
             break
 
