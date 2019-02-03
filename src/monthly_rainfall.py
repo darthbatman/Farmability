@@ -24,10 +24,10 @@ def weather(lat, lon):
         url = "https://www.ncdc.noaa.gov/cdo-web/api/v2/data?stationid=" + station['id'] + "&datasetid=GSOM&units=standard&startdate=" + year + "-04-01&enddate=" + year + "-08-01&datatypeid=PRCP"
         r = requests.get(url, headers={ "token":"VKVbZaeexBHlGtqQjyHXSNEGHVfBzWuO" })
         response = json.loads(r.text)
+        rainfall = {}
         if 'results' in response:
             data = response['results']
             rPerMonth = [None] * 5
-            rainfall = {}
             for j in range(0,5):
                 rPerMonth[j] = data[j]['value']
             rainfall[2009+i] = rPerMonth
