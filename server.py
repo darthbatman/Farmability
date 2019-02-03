@@ -11,8 +11,9 @@ sys.path.insert(0, './src/vision/')
 from hslpipline import *
 
 app = Flask(__name__, template_folder='web')
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 app.secret_key = "secret key"
-app.config['UPLOAD_FOLDER'] = 'assets/uploaded/'
+app.config['UPLOAD_FOLDER'] = 'assets'
 ALLOWED_EXTENSIONS = set(['png', 'jpg'])
 
 
@@ -35,10 +36,7 @@ def upload_file():
             google = request.form['google']
             if google != '':
                 filename = 'google-maps1.png'
-                filepath = app.config['UPLOAD_FOLDER'] + filename
-                if (os.path.isfile(filepath)):
-                    os.remove(filepath)
-
+                filepath = app.config['UPLOAD_FOLDER'] + '/' + filename
                 filename = secure_filename(filename)
                 map_to_image.save_image_for_google_maps_url(filepath, google)
                 process_image(filepath)
@@ -53,7 +51,7 @@ def upload_file():
         # submit an empty part without filename
         if file and allowed_file(file.filename) and coordinates != '':
             filename = secure_filename(file.filename)
-            filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename) 
+            filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             file.save(filepath)
             process_image(filepath)
 
@@ -68,12 +66,14 @@ def uploaded_file(filename):
     if request.method == 'POST':
         rgb = request.get_json()
 
+    
     filename = app.config['UPLOAD_FOLDER'] + '/' + filename
     return render_template('uploaded_image.html', filename=filename)
 
 @app.route('/assets/<filename>')
 def send_assets(filename):
-    return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
+    print("assests accesesd")
+    return send_from_directory('assets', filename)
 
 @app.route('/css/<filename>')
 def send_css(filename):
@@ -89,8 +89,17 @@ def send_img(filename):
 
 @app.route('/js/<path:path>')
 def send_js(path):
-    return send_from_directory('js', path)
+    return send_from_directory('web/js', path)
+
+@app.after_request
+def add_header(response):
+    # response.cache_control.no_store = True
+    response.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0'
+    response.headers['Pragma'] = 'no-cache'
+    response.headers['Expires'] = '-1'
+    return response
 
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", debug=True)
+
