@@ -3,38 +3,115 @@
 	<head>
 		<title>Farmability</title>
 		<link rel="stylesheet" type="text/css" href="css/info.css">
+		<link rel="icon" type="image/png" href="img/icon.png">
 	</head>
 	<body>
 		<script src="js/info.js"></script>
-		<div id="content-container">
+		<div id="header">
 			<p id="title">Land Analysis</p>
-			<div id="left">
-				<div id="left-up">
-					<canvas id="old_image">
-						<script>
-							var canvas = document.getElementById("old_image");
-							var ctx = canvas.getContext("2d");
-							ctx.fillStyle = "#FF0000";
-							ctx.fillRect(0, 0, 150, 150);
-						</script>
-					</canvas>
+		</div>
+		<div id="images-container">
+			<canvas id="canvas" class="field-images" src="{{filename}}" onclick="getRGB()">
+	            <script> 
+	                var canvas = document.getElementById("canvas")
+	                var img = new Image
+	                img.src = canvas.getAttribute("src")
+	                img.onload = function() {
+	                    canvas.width = img.width
+	                    canvas.height = img.height
+	                    canvas.getContext("2d").drawImage(img, 0, 0);
+	                    var processed_image = document.getElementById("processed")
+	                    processed_image.src = img.src.substr(0, img.src.length - 4) + '_processed.png'
+	                }
+	            </script>
+	        </canvas>
+	        <img class="field-images" id="processed">
+		</div>
+		<div id="summary-container">
+			<div id="summary-one" class="hackathon-hide">
+				<div id="symbol-container">
+					<img id="symbol" src="" />
 				</div>
-				<div id="left-down">
-					<canvas id="new_image">
-						<script>
-							var canvas = document.getElementById("new_image");
-							var ctx = canvas.getContext("2d");
-							ctx.fillStyle = "#FF0000";
-							ctx.fillRect(0, 0, 150, 150);
-						</script>
-					</canvas>
+				<div id="summary-text-container">
+					<div id="summary-title-container">
+						<p id="summary-title"></p>
+					</div>
+					<div id="summary-subtitle-container">
+						<p id="summary-subtitle"></p>
+					</div>
+					<div id="summary-member-one-container">
+						<p id="summary-member-one"></p>
+						<img id="summary-member-one-icon" src=""/>
+					</div>
+					<div id="summary-member-two-container">
+						<p id="summary-member-two"></p>
+						<img id="summary-member-two-icon" src=""/>
+					</div>
 				</div>
 			</div>
-			<div id="center">
-				<h1>Hello</h1>
+			<div id="summary-two">
+				<div id="symbol-container">
+					<img id="symbol" src="" />
+				</div>
+				<div id="summary-text-container">
+					<div id="summary-title-container">
+						<p id="summary-title"></p>
+					</div>
+					<div id="summary-subtitle-container">
+						<p id="summary-subtitle"></p>
+					</div>
+					<div id="summary-member-one-container">
+						<p id="summary-member-one"></p>
+						<img id="summary-member-one-icon" src=""/>
+					</div>
+					<div id="summary-member-two-container">
+						<p id="summary-member-two"></p>
+						<img id="summary-member-two-icon" src=""/>
+					</div>
+				</div>
 			</div>
-			<div id="right">
-				<h1>Hello</h1>
+			<div id="summary-three" class="hackathon-hide">
+				<div id="symbol-container">
+					<img id="symbol" src="" />
+				</div>
+				<div id="summary-text-container">
+					<div id="summary-title-container">
+						<p id="summary-title"></p>
+					</div>
+					<div id="summary-subtitle-container">
+						<p id="summary-subtitle"></p>
+					</div>
+					<div id="summary-member-one-container">
+						<p id="summary-member-one"></p>
+						<img id="summary-member-one-icon" src=""/>
+					</div>
+					<div id="summary-member-two-container">
+						<p id="summary-member-two"></p>
+						<img id="summary-member-two-icon" src=""/>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="additional-info-container">
+			<div id="additional-info">
+				<div id="additional-info-title-container">
+					<p id="additional-info-title">
+				</div>
+				<div id="additional-info-data-container">
+					<div class="additional-info-data" id="additional-info-data-color" style="background-color: rgb({{soil_color_r}},{{soil_color_g}},{{soil_color_b}});">
+					</div>
+					<div class="additional-info-data" id="additional-info-data-text-one">
+					</div>
+					<div class="additional-info-data" id="additional-info-data-text-two">
+					</div>
+				</div>
+				<div id="additional-info-indication-container">
+					<ul>
+						<li id="additional-info-indication-one"></li>
+						<li id="additional-info-indication-two"></li>
+						<li id="additional-info-indication-three"></li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</body>

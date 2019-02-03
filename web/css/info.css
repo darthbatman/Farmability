@@ -1,68 +1,188 @@
 @font-face {
-	font-family: Avenir;
-	src: url(fonts/AvenirLT.ttf);
+  font-family: Avenir;
+  src: url(../fonts/AvenirLT.ttf);
 }
 
-html,
 body {
-  min-height: 100%;
+	width: 100%;
+	overflow: hidden;
+	font-family: Avenir;
+}
+
+#header {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	text-align: left;
+	/*border: 1px solid red;*/
+	padding-left: 2%;
+	line-height: 10%;
+	max-height: 10%;
 }
 
 #title {
-	margin-top: 3%;
-	margin-left: 3%;
-	float: top;
-	font-family: 'Avenir';
-	font-size: 32px;
+	font-size: 40px;
+	font-size: 2.5vw; 
 }
 
-#left {
+#images-container {
+	position: absolute;
+	left: 4%;
+	top: 11%;
+	/*border: 1px solid blue;*/
+	height: 88%;
+	width: 28%;
 	text-align: center;
-	width: 33.33%;
-	height: 100%;
-	float: left;
 }
 
-#center {
-	width: 33.33%;
-	height: 100%;
-	float: left;
+.field-images {
+	margin-top: 5%;
+	width: 90%;
+	height: 45%;
+	/*border: 1px solid red;*/
+	display: inline-block;
 }
 
-#right {
-	width: 33.33%;
-	height: 100%;
-	position: relative;
-	float: right;
+#summary-container {
+	position: absolute;
+	left: 34%;
+	top: 11%;
+	/*border: 1px solid green;*/
+	height: 88%;
+	width: 35%;
 }
 
-#left-down, #left-right {
-	text-align: center;
-	height: 50%;
-}
-
-#content-container {
+#summary-one {
+	height: 33%;
 	width: 100%;
+	left: 0;
+	top: 0;
+	/*border: 1px solid blue;*/
+}
+
+#summary-two {
+	height: 33%;
+	width: 100%;
+	left: 0;
+	top: 33%;
+	/*border: 1px solid blue;*/
+}
+
+#summary-three {
+	height: 33%;
+	width: 100%;
+	left: 0;
+	top: 66%;
+	/*border: 1px solid blue;*/
+}
+
+#symbol-container {
+	float: left;
+	top: 0;
+	left: 0;
+	width: 20%;
 	height: 100%;
-	min-height: 100%;
+	border: 1px solid red;
+	text-align: center;
+	visibility: hidden;
 }
 
-#old_image {
-	text-align: center;
-	padding: 0;
-	margin: auto;
+#symbol {
+	top: 0;
+	width: 50%;
+	height: 20%;
+	border: 1px solid green;
 }
 
-#new_image {
-	text-align: center;
-	padding: 0;
-	margin: auto;
+#summary-text-container {
+	float: right;
+	left: 20%;
+	width: 74%;
+	top: 0;
+	height: 100%; 
+	border: 1px solid transparent;
 }
 
-input[type=text] {
-	font-family: 'Avenir';
-	font-size: 32px;
+.hackathon-hide {
+	visibility: hidden;
+}
+
+#summary-title-container {
+	top: 0;
+	height: 30%;
+	width: 100%;
+	border: 1px solid red;
+}
+
+#summary-subtitle-container {
+	top: 30%;
+	height: 25%;
+	width: 100%;
+	border: 1px solid red;
+}
+
+#summary-member-one-container {
+	top: 55%;
+	height: 15%;
+	width: 100%;
+	border: 1px solid red;
+}
+
+#summary-member-two-container {
+	top: 70%;
+	height: 15%;
+	width: 100%;
+	border: 1px solid red;
+}
+
+#additional-info-container {
+	position: absolute;
+	left: 71%;
+	top: 11%;
+	border: 1px solid transparent;
+	height: 88%;
+	width: 28%;
+}
+
+#additional-info {
+	margin: 10%;
+	margin-top: 30%;
+	width: 80%;
+	height: 60%;
+	border: 1px solid #A6A6A6;
+	border-radius: 40px;
+}
+
+#additional-info-title-container {
+	top: 0;
+	height: 20%;
+	width: 100%;
+}
+
+#additional-info-data-container {
+	top: 20%;
+	height: 60%;
+	width: 100%;
+	border: 1px solid #A6A6A6;
 	text-align: center;
-	background-color: #F4F4F4;
-	color: #5F5F5F;
+}
+
+.additional-info-data {
+	margin-top: 6%;
+	width: 80%;
+	height: 20%;
+	/*border: 1px solid red;*/
+	display: inline-block;
+}
+
+#additional-info-indication-one {
+	visibility: hidden;
+}
+
+#additional-info-indication-two {
+	visibility: hidden;
+}
+
+#additional-info-indication-three {
+	visibility: hidden;
 }
