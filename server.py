@@ -3,6 +3,8 @@ from flask import Flask, render_template, flash, request, redirect, url_for, sen
 from werkzeug.utils import secure_filename
 from src.soil_color import find_closest_soil_match_by_color
 from src.monthly_rainfall import weather
+from src.dominant_image_color import dominant_color
+
 import sys
 import cv2
 
@@ -48,6 +50,11 @@ def upload_file():
                 filename = secure_filename(filename)
                 map_to_image.save_image_for_google_maps_url(filepath, google)
                 process_image(filepath)
+                if 'favicon.ico' not in filename:
+                    most_dominant_color = dominant_color(filepath)
+                    print(most_dominant_color)
+                    soil_match = find_closest_soil_match_by_color(most_dominant_color, 'data/soil.json')
+                    print(soil_match)
                 return redirect(url_for('uploaded_file', filename=filename))
 
             return render_template('home.html')
@@ -69,6 +76,11 @@ def upload_file():
             file.save(filepath)
             process_image(filepath)
 
+            if 'favicon.ico' not in filename:
+                most_dominant_color = dominant_color(filepath)
+                soil_match = find_closest_soil_match_by_color(most_dominant_color, 'data/soil.json')
+                print(soil_match)
+            
             return redirect(url_for('uploaded_file',
                                     filename=filename))
 
@@ -79,13 +91,6 @@ def upload_file():
 def uploaded_file(filename):
     if request.method == 'POST':
         rgb = request.get_json()
-        print(rgb)
-        soil_color = [None] * 3
-        soil_color[0] = rgb['R']
-        soil_color[1] = rgb['G']
-        soil_color[2] = rgb['B']
-        soil_match = find_closest_soil_match_by_color(soil_color, 'data/soil.json')
-        print(soil_match)
 
     filename = app.config['UPLOAD_FOLDER'] + '/' + filename
     return render_template('uploaded_image.html', filename=filename)
