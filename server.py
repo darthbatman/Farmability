@@ -10,7 +10,7 @@ import map_to_image
 sys.path.insert(0, './vision/')
 from hslpipline import *
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='web')
 app.secret_key = "secret key"
 app.config['UPLOAD_FOLDER'] = 'assets'
 ALLOWED_EXTENSIONS = set(['png', 'jpg'])
@@ -32,11 +32,22 @@ def upload_file():
     if request.method == 'POST':
         # check if the post request has the file part
         if 'file' not in request.files:
+            google = request.form['google']
+            if google != '':
+                filename = 'google-maps1.png'
+                filepath = 'assets/' + filename
+                if (os.path.isfile(filepath)):
+                    os.remove(filepath)
+
+                filename = secure_filename(filename)
+                map_to_image.save_image_for_google_maps_url(filepath, google)
+                process_image(filepath)
+                return redirect(url_for('uploaded_file', filename=filename))
+
             return render_template('home.html')
 
         file = request.files['file']
         coordinates = request.form['coordinates']
-        google = request.form['google']
         
         # if user does not select file, browser also
         # submit an empty part without filename
@@ -48,8 +59,6 @@ def upload_file():
 
             return redirect(url_for('uploaded_file',
                                     filename=filename))
-        elif google:
-            map_to_image.save_image_for_google_maps_url(app.config['UPLOAD_FOLDER'] + '/google-maps.png', google)
 
     return render_template('home.html')
 
