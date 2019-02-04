@@ -3,7 +3,7 @@
 ## Description
 `Farmability` is a web accessible tool that automates the process of outlining the tillable area on a plot of farmland. 
 
-Won [Challenge #2 and 3rd Place Overall](https://devpost.com/software/farmability) at [AGCO Accelerator Hackathon 2019](https://agco-accelerator-hack.com/)
+Won [Challenge #2 and 3rd Place Overall](https://devpost.com/software/farmability) at [AGCO Accelerator Hackathon 2019](https://agco-accelerator-hack.com/).
 
 ## Prompt
 CHALLENGE #2: WHERE DO I FARM?
@@ -14,18 +14,15 @@ This challenge is to create a software tool using readily available maps as inpu
 
 The vision is that that farmers can use this map to plan and execute their farming operations throughout the crop cycle or to create a coverage path at the field entrance just before starting to operate. The coverage map needs to clearly identify ‘no-farm zone’ assets as zones excluded from the rest of the field.
 
-## Idea
-System to Provide Following Information:
-- Where to Plant
-- How Many Seeds to Buy
-- What to Plant Based on:
-  - Size of Field
-  - Shape of Field
-  - Color of Field
-  - Location (Latitude, Longitude)
-  - Temperature for Location
-  - Precipitation for Location
-  - Seeds Owned
+## Features
+`Farmability` provides the user:
+- Plantable Area
+- Average Historical Precipitation for the Area
+- Soil Characteristics for the Tillable Land using Soil Color and Munsell Soil Classification
+
+## Processed Image Examples
+![Example Field 0](assets/readme/example_field_0.png)
+![Example Field 1](assets/readme/example_field_1.png)
 
 ## Resources
 https://patents.google.com/patent/US20160029545?oq=field+characteristics+satellite+image
@@ -34,8 +31,3 @@ https://agco-accelerator-hack.com/challenge-2.pdf
 
 http://ecocrop.fao.org/ecocrop/srv/en/cropSearchForm
 
-## Documents
-
-https://docs.google.com/document/d/1tYzqF3D-1ZxzR3AAZBuKdKxuq2mgJ_2ZvuA0JKfKaqY/edit?usp=sharing
-
-https://docs.google.com/presentation/d/1zYnRsIAuqdpnNaryJ1sehUgX7LJvUInNjwYW6f6hIPo/edit?usp=sharing
