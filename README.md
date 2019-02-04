@@ -1,4 +1,7 @@
-# Farmability
+<h1 align="center">
+  <img width="30%" src="./logo.png" />
+  <br />
+</h1>
 
 ## AGCO Accelerator Hackathon (2019)
 Won Challenge #2 and 3rd Place Overall

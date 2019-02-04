@@ -1,20 +1,13 @@
 import os
 from flask import Flask, render_template, flash, request, redirect, url_for, send_from_directory
 from werkzeug.utils import secure_filename
-from src.soil_color import find_closest_soil_match_by_color
-from src.monthly_rainfall import weather
-from src.dominant_image_color import dominant_color
-
-import sys
+from lib import soil_color
+from lib import monthly_rainfall
+from lib import dominant_image_color
+from lib import vision
 import cv2
 import numpy
-
-sys.path.insert(0, './src/')
-import map_to_image
-import dominant_image_color
-
-sys.path.insert(0, './src/vision/')
-from hslpipline import *
+from lib import map_to_image
 
 app = Flask(__name__, template_folder='web')
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
@@ -32,7 +25,7 @@ def allowed_file(filename):
 
 def process_image(filename="assets/fields/generated_fields/field0.png", h=24, s=17, l=41):
     image = cv2.imread(filename, cv2.IMREAD_UNCHANGED)
-    pipeline = HSLPipline(h, s, l, filename)
+    pipeline = vision.hslpipline.HSLPipline(h, s, l, filename)
     pipeline.process(image)
 
 @app.route('/', methods=['GET', 'POST'])
@@ -49,7 +42,7 @@ def upload_file():
                 global avg_rain
                 print(lat)
                 print(lon)
-                avg_rain = weather(float(lat),float(lon))
+                avg_rain = monthly_rainfall.weather(float(lat),float(lon))
                 print(avg_rain)
 
                 filename = 'google-maps1.png'
@@ -58,10 +51,8 @@ def upload_file():
                 map_to_image.save_image_for_google_maps_url(filepath, google)
                 process_image(filepath)
                 if 'favicon.ico' not in filename:
-                    most_dominant_color = dominant_color(filepath)
-                    print(most_dominant_color)
-                    soil_match = find_closest_soil_match_by_color(most_dominant_color, 'data/soil.json')
-                    print(soil_match)
+                    most_dominant_color = dominant_image_color.dominant_color(filepath)
+                    soil_match = soil_color.find_closest_soil_match_by_color(most_dominant_color, 'data/soil.json')
                 return redirect(url_for('uploaded_file', filename=filename))
 
             return render_template('home.html')
@@ -75,7 +66,7 @@ def upload_file():
             lat = coordinates
             lon = lat[lat.find(',')+1:]
             lat = lat[:lat.find(',')]
-            avg_rain = weather(float(lat),float(lon))
+            avg_rain = monthly_rainfall.weather(float(lat),float(lon))
 
             filename = secure_filename(file.filename)
             print(request.form['coordinates'])
@@ -84,8 +75,8 @@ def upload_file():
             process_image(filepath)
 
             if 'favicon.ico' not in filename:
-                most_dominant_color = dominant_color(filepath)
-                soil_match = find_closest_soil_match_by_color(most_dominant_color, 'data/soil.json')
+                most_dominant_color = dominant_image_color.dominant_color(filepath)
+                soil_match = soil_color.find_closest_soil_match_by_color(most_dominant_color, 'data/soil.json')
                 print(soil_match)
             
             return redirect(url_for('uploaded_file',
@@ -107,7 +98,7 @@ def uploaded_file(filename):
 
     if 'favicon.ico' not in filename:
         most_dominant_color = dominant_image_color.dominant_color(filename)
-        soil_match = find_closest_soil_match_by_color(most_dominant_color, 'data/soil.json')
+        soil_match = soil_color.find_closest_soil_match_by_color(most_dominant_color, 'data/soil.json')
 
     return render_template('info.html',
         filename=filename,
