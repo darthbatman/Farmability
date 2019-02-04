@@ -1,4 +1,6 @@
-# AGCO Accelerator Hackathon
+# Farmability
+
+## AGCO Accelerator Hackathon (2019)
 
 ## Prompt
 CHALLENGE #2: WHERE DO I FARM?
