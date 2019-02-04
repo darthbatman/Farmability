@@ -1,6 +1,7 @@
 # Farmability
 
 ## AGCO Accelerator Hackathon (2019)
+Won Challenge #2 and 3rd Place Overall
 
 ## Prompt
 CHALLENGE #2: WHERE DO I FARM?
