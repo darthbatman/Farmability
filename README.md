@@ -1,7 +1,6 @@
-<h1 align="center">
-  <img width="30%" src="./logo.png" />
-  <br />
-</h1>
+![Logo](assets/readme/logo.png)
+
+`Farmability` is a web accessible tool that automates the process of outlining the tillable area on a plot of farmland.
 
 ## AGCO Accelerator Hackathon (2019)
 Won Challenge #2 and 3rd Place Overall
