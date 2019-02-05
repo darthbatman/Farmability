@@ -15,7 +15,7 @@ This challenge is to create a software tool using readily available maps as inpu
 The vision is that that farmers can use this map to plan and execute their farming operations throughout the crop cycle or to create a coverage path at the field entrance just before starting to operate. The coverage map needs to clearly identify ‘no-farm zone’ assets as zones excluded from the rest of the field.
 
 ## Features
-`Farmability` provides the user:
+`Farmability` provides the following data:
 - Plantable Area
 - Average Historical Precipitation for the Area
 - Soil Characteristics for the Tillable Land using Soil Color and Munsell Soil Classification
