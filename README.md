@@ -20,6 +20,9 @@ The vision is that that farmers can use this map to plan and execute their farmi
 - Average Historical Precipitation for the Area
 - Soil Characteristics for the Tillable Land using Soil Color and Munsell Soil Classification
 
+## Architecture
+![Architecture](assets/readme/architecture.png)
+
 ## Processed Image Examples
 ![Example Field 0](assets/readme/example_field_0.png)
 ![Example Field 1](assets/readme/example_field_1.png)
