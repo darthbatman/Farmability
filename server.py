@@ -49,7 +49,7 @@ def upload_file():
                 global avg_rain
                 print(lat)
                 print(lon)
-                avg_rain = weather(float(lat),float(lon))
+                # avg_rain = weather(float(lat),float(lon))
                 print(avg_rain)
 
                 filename = 'google-maps1.png'
@@ -75,7 +75,7 @@ def upload_file():
             lat = coordinates
             lon = lat[lat.find(',')+1:]
             lat = lat[:lat.find(',')]
-            avg_rain = weather(float(lat),float(lon))
+            # avg_rain = weather(float(lat),float(lon))
 
             filename = secure_filename(file.filename)
             print(request.form['coordinates'])

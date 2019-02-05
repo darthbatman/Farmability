@@ -1,5 +1,5 @@
 from PIL import Image
-from .google_maps_static_api_request import GoogleMapsStaticAPIRequest
+from google_maps_static_api_request import GoogleMapsStaticAPIRequest
 
 
 def crop_out_google_footer(source_image_path, cropped_image_path):
