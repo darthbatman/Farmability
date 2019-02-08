@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="assets/readme/logo.png" width="40%" />
+  <img src="assets/readme/logo.png" width="64%" />
   <br />
 </h1>
 
