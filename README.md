@@ -24,8 +24,8 @@ The vision is that that farmers can use this map to plan and execute their farmi
 ![Architecture](assets/readme/architecture.png)
 
 ## Processed Image Examples
-![Example Field 0](assets/readme/example_field_0.png)
-![Example Field 1](assets/readme/example_field_1.png)
+![Example Processed Field 0](assets/readme/example_processed_field_0.png)
+![Example Processed Field 1](assets/readme/example_processed_field_1s.png)
 
 ## Resources
 https://patents.google.com/patent/US20160029545?oq=field+characteristics+satellite+image
