@@ -1,4 +1,5 @@
 ![Logo](assets/readme/logo.png)
+![python (scoped)](https://img.shields.io/badge/python-%3E%3D3.6.5-brightgreen.svg)
 
 ## Description
 `Farmability` is a web accessible tool that automates the process of outlining the tillable area on a plot of farmland. 
