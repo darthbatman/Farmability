@@ -4,10 +4,13 @@ from werkzeug.utils import secure_filename
 from src.soil_color import find_closest_soil_match_by_color
 from src.monthly_rainfall import weather
 from src.dominant_image_color import dominant_color
-
 import sys
 import cv2
 import numpy
+
+import logging
+log = logging.getLogger('werkzeug')
+log.setLevel(logging.ERROR)
 
 sys.path.insert(0, './src/')
 import map_to_image
@@ -31,15 +34,20 @@ def allowed_file(filename):
 
 
 def process_image(filename="assets/fields/generated_fields/field0.png", h=24, s=17, l=41):
+    print(filename)
     image = cv2.imread(filename, cv2.IMREAD_UNCHANGED)
     pipeline = HSLPipline(h, s, l, filename)
+    print(image)
     pipeline.process(image)
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
+    print("here0")
     if request.method == 'POST':
+        print("here1")
         # check if the post request has the file part
         if 'file' not in request.files:
+            print("here2")
             google = request.form['google']
             if google != '':
                 lat = google[google.find('@')+1:]
@@ -47,10 +55,7 @@ def upload_file():
                 lon = lat[1]
                 lat = lat[0]
                 global avg_rain
-                print(lat)
-                print(lon)
                 # avg_rain = weather(float(lat),float(lon))
-                print(avg_rain)
 
                 filename = 'google-maps1.png'
                 filepath = app.config['UPLOAD_FOLDER'] + '/' + filename
@@ -59,9 +64,7 @@ def upload_file():
                 process_image(filepath)
                 if 'favicon.ico' not in filename:
                     most_dominant_color = dominant_color(filepath)
-                    print(most_dominant_color)
                     soil_match = find_closest_soil_match_by_color(most_dominant_color, 'data/soil.json')
-                    print(soil_match)
                 return redirect(url_for('uploaded_file', filename=filename))
 
             return render_template('home.html')
@@ -72,13 +75,13 @@ def upload_file():
         # if user does not select file, browser also
         # submit an empty part without filename
         if file and allowed_file(file.filename) and coordinates != '':
+            print("here3")
             lat = coordinates
             lon = lat[lat.find(',')+1:]
             lat = lat[:lat.find(',')]
             # avg_rain = weather(float(lat),float(lon))
 
             filename = secure_filename(file.filename)
-            print(request.form['coordinates'])
             filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             file.save(filepath)
             process_image(filepath)
@@ -86,7 +89,6 @@ def upload_file():
             if 'favicon.ico' not in filename:
                 most_dominant_color = dominant_color(filepath)
                 soil_match = find_closest_soil_match_by_color(most_dominant_color, 'data/soil.json')
-                print(soil_match)
             
             return redirect(url_for('uploaded_file',
                                     filename=filename))
@@ -96,7 +98,7 @@ def upload_file():
 
 @app.route('/<filename>', methods=['GET', 'POST', 'OPTIONS'])
 def uploaded_file(filename):
-    filepath = app.config['UPLOAD_FOLDER'] + '/' + request.url[20:]
+    filepath = app.config['UPLOAD_FOLDER'] + '/' + request.url.split('/')[len(request.url.split('/')) - 1]
     if request.method == 'POST':
         rgb = request.get_json()
         rgb = numpy.uint8([[[rgb['B'],rgb['G'],rgb['R']]]])
@@ -122,7 +124,6 @@ def uploaded_file(filename):
 
 @app.route('/assets/<filename>')
 def send_assets(filename):
-    print("assests accesesd")
     return send_from_directory('assets', filename)
 
 @app.route('/css/<filename>')

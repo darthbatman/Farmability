@@ -43,8 +43,6 @@ function removeAdditionalInfo() {
 }
 
 window.addEventListener('load', function() {
-    console.log("hello");
-    console.log(document.getElementById('additional-info-indication-two').innerHTML);
     if (document.getElementById('additional-info-indication-two').innerHTML.indexOf("organic") != -1) {
         var suggestionString = "Suggestion: ";
         suggestionString += "Less Fertilizer Required";

@@ -61,6 +61,7 @@ class HSLPipline:
         """
         # Step Blur0:
         self.__blur_0_input = source0
+        print(source0)
         (self.blur_0_output) = self.__blur(
             self.__blur_0_input, self.__blur_0_type, self.__blur_0_radius)
 
@@ -126,6 +127,8 @@ class HSLPipline:
         """
         if(type is BlurType.Box_Blur):
             ksize = int(2 * round(radius) + 1)
+            print(src)
+            print(ksize)
             return cv2.blur(src, (ksize, ksize))
         elif(type is BlurType.Gaussian_Blur):
             ksize = int(6 * round(radius) + 1)
