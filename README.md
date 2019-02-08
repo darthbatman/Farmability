@@ -1,4 +1,8 @@
-![Logo](assets/readme/logo.png)
+<h1 align="center">
+  <img src="assets/readme/logo.png" width="40%" />
+  <br />
+</h1>
+
 ![python (scoped)](https://img.shields.io/badge/python-%3E%3D3.6.5-brightgreen.svg)
 
 ## Description
