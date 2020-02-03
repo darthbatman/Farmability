@@ -21,7 +21,7 @@ mccabe==0.6.1
 numpy==1.16.0
 opencv-python==4.0.0.21
 pick==0.6.4
-Pillow==5.4.1
+Pillow==6.2.0
 post==1.0.2
 progressbar2==3.37.1
 public==1.0.3
