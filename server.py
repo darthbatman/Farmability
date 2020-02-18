@@ -33,21 +33,18 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-def process_image(filename="assets/fields/generated_fields/field0.png", h=24, s=17, l=41):
-    print(filename)
+def process_image(filename="assets/fields/generated_fields/field0.png",
+                  h=24, s=17, lum=41):
     image = cv2.imread(filename, cv2.IMREAD_UNCHANGED)
-    pipeline = HSLPipline(h, s, l, filename)
-    print(image)
+    pipeline = HSLPipline(h, s, lum, filename)
     pipeline.process(image)
+
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
-    print("here0")
     if request.method == 'POST':
-        print("here1")
         # check if the post request has the file part
         if 'file' not in request.files:
-            print("here2")
             google = request.form['google']
             if google != '':
                 lat = google[google.find('@')+1:]
@@ -55,31 +52,28 @@ def upload_file():
                 lon = lat[1]
                 lat = lat[0]
                 global avg_rain
-                # avg_rain = weather(float(lat),float(lon))
-
-                filename = 'google-maps1.png'
+                filename = 'assets/fields/google_amps/google-maps1.png'
                 filepath = app.config['UPLOAD_FOLDER'] + '/' + filename
                 filename = secure_filename(filename)
                 map_to_image.save_image_for_google_maps_url(filepath, google)
                 process_image(filepath)
                 if 'favicon.ico' not in filename:
                     most_dominant_color = dominant_color(filepath)
-                    soil_match = find_closest_soil_match_by_color(most_dominant_color, 'data/soil.json')
+                    soil_match = find_closest_soil_match_by_color(
+                        most_dominant_color, 'data/soil.json')
                 return redirect(url_for('uploaded_file', filename=filename))
 
             return render_template('home.html')
 
         file = request.files['file']
         coordinates = request.form['coordinates']
-        
+
         # if user does not select file, browser also
         # submit an empty part without filename
         if file and allowed_file(file.filename) and coordinates != '':
-            print("here3")
             lat = coordinates
             lon = lat[lat.find(',')+1:]
             lat = lat[:lat.find(',')]
-            # avg_rain = weather(float(lat),float(lon))
 
             filename = secure_filename(file.filename)
             filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
@@ -89,7 +83,7 @@ def upload_file():
             if 'favicon.ico' not in filename:
                 most_dominant_color = dominant_color(filepath)
                 soil_match = find_closest_soil_match_by_color(most_dominant_color, 'data/soil.json')
-            
+
             return redirect(url_for('uploaded_file',
                                     filename=filename))
 
@@ -98,53 +92,60 @@ def upload_file():
 
 @app.route('/<filename>', methods=['GET', 'POST', 'OPTIONS'])
 def uploaded_file(filename):
-    filepath = app.config['UPLOAD_FOLDER'] + '/' + request.url.split('/')[len(request.url.split('/')) - 1]
+    filepath = app.config['UPLOAD_FOLDER'] + '/' + \
+        request.url.split('/')[len(request.url.split('/')) - 1]
     if request.method == 'POST':
         rgb = request.get_json()
-        rgb = numpy.uint8([[[rgb['B'],rgb['G'],rgb['R']]]])
-        hls = cv2.cvtColor(rgb,cv2.COLOR_BGR2HLS)
+        rgb = numpy.uint8([[[rgb['B'], rgb['G'], rgb['R']]]])
+        hls = cv2.cvtColor(rgb, cv2.COLOR_BGR2HLS)
         process_image(filepath, hls[0][0][0], hls[0][0][2], hls[0][0][1])
 
     filename = app.config['UPLOAD_FOLDER'] + '/' + filename
 
     if 'favicon.ico' not in filename:
         most_dominant_color = dominant_image_color.dominant_color(filename)
-        soil_match = find_closest_soil_match_by_color(most_dominant_color, 'data/soil.json')
+        soil_match = find_closest_soil_match_by_color(most_dominant_color,
+                                                      'data/soil.json')
 
     return render_template('info.html',
-        filename=filename,
-        soil_color_r=most_dominant_color[0],
-        soil_color_g=most_dominant_color[1],
-        soil_color_b=most_dominant_color[2],
-        soil_munsell_fine=soil_match['munsell_fine'],
-        soil_munsell_color=soil_match['munsell_color'],
-        soil_water_content=soil_match['water_content'],
-        soil_indicates=soil_match['indicates'][0],
-        precipitation=str(avg_rain))
+                           filename=filename,
+                           soil_color_r=most_dominant_color[0],
+                           soil_color_g=most_dominant_color[1],
+                           soil_color_b=most_dominant_color[2],
+                           soil_munsell_fine=soil_match['munsell_fine'],
+                           soil_munsell_color=soil_match['munsell_color'],
+                           soil_water_content=soil_match['water_content'],
+                           soil_indicates=soil_match['indicates'][0],
+                           precipitation=str(avg_rain))
+
 
 @app.route('/assets/<filename>')
 def send_assets(filename):
     return send_from_directory('assets', filename)
 
+
 @app.route('/css/<filename>')
 def send_css(filename):
     return send_from_directory('web/css', filename)
+
 
 @app.route('/fonts/<filename>')
 def send_fonts(filename):
     return send_from_directory('web/fonts', filename)
 
+
 @app.route('/img/<filename>')
 def send_img(filename):
     return send_from_directory('web/img', filename)
+
 
 @app.route('/js/<path:path>')
 def send_js(path):
     return send_from_directory('web/js', path)
 
+
 @app.after_request
 def add_header(response):
-    # response.cache_control.no_store = True
     response.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0'
     response.headers['Pragma'] = 'no-cache'
     response.headers['Expires'] = '-1'
@@ -152,4 +153,4 @@ def add_header(response):
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0",debug=True)
+    app.run(host="0.0.0.0", debug=True)
